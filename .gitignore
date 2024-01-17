@@ -1,5 +1,7 @@
 .env
 scripts/.venv
 *local*
-*/**/__pycache__
+
+#ignore all .pyc files
 *.pyc
+
