@@ -1,0 +1,66 @@
+<mxfile host="65bd71144e">
+    <diagram id="Hb49kBo_I8BCQ2mujjPx" name="Page-1">
+        <mxGraphModel dx="719" dy="544" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="18" value="Azure" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fontColor=#0066CC;align=center;verticalAlign=bottom;fillColor=none;strokeColor=#0066CC;" vertex="1" parent="1">
+                    <mxGeometry x="86" y="79" width="656" height="372" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" style="edgeStyle=none;html=1;strokeColor=#0066CC;fontColor=#000000;" edge="1" parent="1" source="2" target="6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="3.识别PDF" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=none;" vertex="1" connectable="0" parent="10">
+                    <mxGeometry x="0.2248" relative="1" as="geometry">
+                        <mxPoint x="29" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;html=1;strokeColor=#0066CC;fontColor=#000000;" edge="1" parent="1" source="2" target="5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="5. Embedding内容" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=none;" vertex="1" connectable="0" parent="11">
+                    <mxGeometry x="0.3383" relative="1" as="geometry">
+                        <mxPoint x="43" y="-13" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" style="edgeStyle=none;html=1;entryX=0.05;entryY=0.626;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#0066CC;fontColor=#000000;" edge="1" parent="1" source="2" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="6.创建索引" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=none;" vertex="1" connectable="0" parent="12">
+                    <mxGeometry x="-0.1154" relative="1" as="geometry">
+                        <mxPoint y="11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="Azure Instance&lt;br&gt;4.文档处理和分块" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/containers/Container_Instances.svg;labelBackgroundColor=none;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="401" y="166" width="64" height="69" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=none;html=1;labelBackgroundColor=none;strokeColor=#0066CC;fontColor=#0066CC;" edge="1" parent="1" source="3" target="2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Docker Hub" style="sketch=0;aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/Docker.svg;labelBackgroundColor=none;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="408" y="7" width="50" height="41" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" style="edgeStyle=none;html=1;strokeColor=#0066CC;fontColor=#000000;labelBackgroundColor=none;" edge="1" parent="1" source="4" target="2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="2.读取列表" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=none;" vertex="1" connectable="0" parent="9">
+                    <mxGeometry x="0.1219" relative="1" as="geometry">
+                        <mxPoint x="-2" y="7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="文档库" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/storage/Storage_Accounts.svg;fontColor=#000000;labelBackgroundColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="183" y="174.5" width="65" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Azure OpenAI Embedding" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/ai_machine_learning/Cognitive_Services.svg;labelBackgroundColor=none;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="550" y="306" width="68" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Document Intelligence" style="sketch=0;aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/Cognitive_Services.svg;labelBackgroundColor=none;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="279" y="318" width="50" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Azure AI Search" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/app_services/Search_Services.svg;labelBackgroundColor=none;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="631" y="172" width="72" height="52" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

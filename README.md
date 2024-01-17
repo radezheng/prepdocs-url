@@ -4,7 +4,7 @@
 <br/>
 部署完之后，会将data目录下的文档构建index, 但当pdf文件比较大, 比较多的时候，容易超时或出错。这时候可以使用远程构建的方式，将pdf文件上传到Azure Blob Storage，然后通过Azure Container Instance 触发构建触发Document Intelligence的通过URL 识别的操作。
 
-
+![arc](./img/arc.png)
 
 ## 准备环境信息
 需要准备以下服务:
