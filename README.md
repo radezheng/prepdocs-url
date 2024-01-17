@@ -23,6 +23,8 @@ cp .env-example .env
 #Document Intelligence 服务名称(不是endpoint)
 AZURE_FORMRECOGNIZER_SERVICE="xxx"
 AZURE_FORMRECOGNIZER_SERVICE_KEY="xxx"
+#所在的resource group
+DOCUMENT_INTELLIGENCE_RG="xxx"
 #所在区域
 AZURE_LOCATION="japaneast"
 
@@ -52,6 +54,9 @@ AZURE_SEARCH_QUERY_SPELLER="none"
 AZURE_STORAGE_ACCOUNT="xxx"
 AZURE_STORAGE_CONTAINER="xxx"
 AZURE_STORAGE_ACCOUNT_KEY="xxx"
+#存储所在的resource group
+AZURE_STORAGE_RG="xxx"
+
 AZURE_SUBSCRIPTION_ID="xxx"
 
 #在azure portal 上可以看到，Entra ID
@@ -62,11 +67,6 @@ AZURE_USE_AUTHENTICATION="false"
 
 ## 授权form recognizer 读取存储的权限
 ```bash
-#存储所在的resource group
-STORAGE_RG="xxx"
-#form recognizer(document intelligence) 所在的resource group
-DOCUMENT_INTELLIGENCE_RG="xxx"
-
 # load .env file
 set -o allexport    
 source .env
@@ -82,7 +82,7 @@ AZURE_FORMRECOGNIZER_SERVICE_ID=$(az cognitiveservices account show --name $AZUR
 
 
 #将form recognizer的身份标识赋予存储的访问权限
-az role assignment create --role "Storage Blob Data Reader" --assignee $AZURE_FORMRECOGNIZER_SERVICE_ID --scope "/subscriptions/$AZURE_SUBSCRIPTION_ID/resourceGroups/$STORAGE_RG/providers/Microsoft.Storage/storageAccounts/$AZURE_STORAGE_ACCOUNT"
+az role assignment create --role "Storage Blob Data Reader" --assignee $AZURE_FORMRECOGNIZER_SERVICE_ID --scope "/subscriptions/$AZURE_SUBSCRIPTION_ID/resourceGroups/$AZURE_STORAGE_RG/providers/Microsoft.Storage/storageAccounts/$AZURE_STORAGE_ACCOUNT"
 
 ```
 
