@@ -1,4 +1,24 @@
 
+# load .env file
+set -o allexport    
+source .env
+set +o allexport
+echo $AZURE_FORMRECOGNIZER_SERVICE
+
+#form recognizer(document intelligence) 所在的resource group
+DOCUMENT_INTELLIGENCE_RG="frm"
+# 打开系统分配的身份标识
+az cognitiveservices account identity assign --name $AZURE_FORMRECOGNIZER_SERVICE --resource-group $DOCUMENT_INTELLIGENCE_RG    
+
+#获取form recognizer的身份标识
+AZURE_FORMRECOGNIZER_SERVICE_ID=$(az cognitiveservices account show --name $AZURE_FORMRECOGNIZER_SERVICE --resource-group $DOCUMENT_INTELLIGENCE_RG --query "identity.principalId" --output tsv)
+
+#存储所在的resource group
+STORAGE_RG="frm"
+#将form recognizer的身份标识赋予存储的访问权限
+az role assignment create --role "Storage Blob Data Reader" --assignee $AZURE_FORMRECOGNIZER_SERVICE_ID --scope "/subscriptions/$AZURE_SUBSCRIPTION_ID/resourceGroups/$STORAGE_RG/providers/Microsoft.Storage/storageAccounts/$AZURE_STORAGE_ACCOUNT"
+
+
 docker build . -t radezheng/predoc_url 
 
 #debug shell
@@ -8,6 +28,7 @@ docker run -it --env-file .env --rm radezheng/predoc_url pwsh
 #run with env setting in .env file, delete the instance after running
 docker run --env-file .env --rm radezheng/predoc_url
 
+docker push radezheng/predoc_url
 
 $env:RESOURCE_GROUP="predoc_url"
 $env:CONTAINER_NAME="predoc_url"
@@ -30,3 +51,4 @@ az container logs --resource-group $RESOURCE_GROUP --name $CONTAINER_NAME
 
 #stream the log
 az container attach --resource-group $RESOURCE_GROUP --name $CONTAINER_NAME
+

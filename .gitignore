@@ -1,2 +1,5 @@
 .env
 scripts/.venv
+*local*
+*/**/__pycache__
+*.pyc

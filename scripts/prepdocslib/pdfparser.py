@@ -71,7 +71,7 @@ class DocumentAnalysisPdfParser(PdfParser):
     ):
         self.model_id = model_id
         self.endpoint = endpoint
-        self.credential = AzureKeyCredential("c95336a65cde4120b8a89a795cd331b7")
+        self.credential = credential
         self.verbose = verbose
 
         #self.formurl = "https://teststo1232.blob.core.windows.net/public/13702429.pdf"

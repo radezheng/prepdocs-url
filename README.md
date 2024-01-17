@@ -60,6 +60,32 @@ AZURE_USE_AUTHENTICATION="false"
 
 ```
 
+## 授权form recognizer 读取存储的权限
+```bash
+#存储所在的resource group
+STORAGE_RG="xxx"
+#form recognizer(document intelligence) 所在的resource group
+DOCUMENT_INTELLIGENCE_RG="xxx"
+
+# load .env file
+set -o allexport    
+source .env
+set +o allexport
+echo $AZURE_FORMRECOGNIZER_SERVICE
+
+
+# 打开系统分配的身份标识
+az cognitiveservices account identity assign --name $AZURE_FORMRECOGNIZER_SERVICE --resource-group $DOCUMENT_INTELLIGENCE_RG    
+
+#获取form recognizer的身份标识
+AZURE_FORMRECOGNIZER_SERVICE_ID=$(az cognitiveservices account show --name $AZURE_FORMRECOGNIZER_SERVICE --resource-group $DOCUMENT_INTELLIGENCE_RG --query "identity.principalId" --output tsv)
+
+
+#将form recognizer的身份标识赋予存储的访问权限
+az role assignment create --role "Storage Blob Data Reader" --assignee $AZURE_FORMRECOGNIZER_SERVICE_ID --scope "/subscriptions/$AZURE_SUBSCRIPTION_ID/resourceGroups/$STORAGE_RG/providers/Microsoft.Storage/storageAccounts/$AZURE_STORAGE_ACCOUNT"
+
+```
+
 ## 运行
 将相关文件上传到Azure Blob Storage的container下，然后运行如下命令:
 ```bash
