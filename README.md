@@ -100,7 +100,7 @@ LOCATION="japaneast"
 az group create --name $RESOURCE_GROUP --location $LOCATION
 # run azure container instance with the image and .env file in region japaneast, run once only.
 
-az container create --resource-group $RESOURCE_GROUP --name $CONTAINER_NAME --image radezheng/predoc_url --dns-name-label $DNS_NAME_LABEL --ports 80 --cpu 1 --memory 1 --location $LOCATION --environment-variables $(cat .env | xargs)
+az container create --resource-group $RESOURCE_GROUP --name $CONTAINER_NAME --image radezheng/predoc_url --restart-policy Never --dns-name-label $DNS_NAME_LABEL --ports 80 --cpu 1 --memory 1 --location $LOCATION --environment-variables $(cat .env | xargs)
 
 
 echo $(cat .env | xargs)
