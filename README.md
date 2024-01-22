@@ -17,7 +17,7 @@
 ```bash
 cp .env-example .env
 ```
-打开.env 文件，填入相关信息
+打开.env 文件，填入相关信息. ***实际.env不能有注释行(也就是#开头的行都要删掉)***
 ```ini
 
 #Document Intelligence 服务名称(不是endpoint)
@@ -90,20 +90,19 @@ az role assignment create --role "Storage Blob Data Reader" --assignee $AZURE_FO
 将相关文件上传到Azure Blob Storage的container下，然后运行如下命令:
 ```bash
 
-#shell version
+#shell version, 按需修改
 RESOURCE_GROUP="predoc_url"
 CONTAINER_NAME="predoc-url"
-DNS_NAME_LABEL="predoc-url-111"
+DNS_NAME_LABEL="predoc-url-"$(date +%s)
 #azure container instance建在哪个区域
-
 LOCATION="japaneast"
-az group create --name $RESOURCE_GROUP --location $LOCATION
-# run azure container instance with the image and .env file in region japaneast, run once only.
 
+az group create --name $RESOURCE_GROUP --location $LOCATION
+
+# run azure container instance with the image and .env file in region japaneast, run once only.
 az container create --resource-group $RESOURCE_GROUP --name $CONTAINER_NAME --image radezheng/predoc_url --restart-policy Never --dns-name-label $DNS_NAME_LABEL --ports 80 --cpu 1 --memory 1 --location $LOCATION --environment-variables $(cat .env | xargs)
 
 
-echo $(cat .env | xargs)
 #get the log
 az container logs --resource-group $RESOURCE_GROUP --name $CONTAINER_NAME
 
